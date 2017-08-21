@@ -1,0 +1,7 @@
+BackOfficeExtensions/bin/Debug/$RANDOM_SEED$
+*.suo
+BackOfficeExtensions/bin/Debug/$RANDOM_SEED$
+*.suo
+/.vs
+/BackOfficeExtensions/obj
+/BackOfficeExtensions/bin/Debug
