@@ -16,8 +16,8 @@ namespace BackOfficeExtensions
             BottomLeft = 3
         }
 
-        public static IHtmlString UmbracoEditLink(this HtmlHelper helper, IPublishedContent thisPage, 
-            EditLinkPosition position = EditLinkPosition.TopLeft, string linkColour = "#00aea2", string editMessage = "Edit", 
+        public static IHtmlString UmbracoEditLink(this HtmlHelper helper, IPublishedContent thisPage,
+            EditLinkPosition position = EditLinkPosition.TopLeft, string linkColour = "#00aea2", string editMessage = "Edit",
             int margin = 10, int zindex = 999, string umbracoEditContentUrl = "/umbraco#/content/content/edit/")
         {
             StringBuilder editLinkCode = new StringBuilder();

@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-      - initial release with simple options
+      - removed dependencies on so many large projects to make it lighter.
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>BackOfficeExtensions</tags>
