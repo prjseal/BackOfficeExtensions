@@ -21,6 +21,8 @@ Then put this helper just after the opening body tag in the master template
 @Html.UmbracoEditLink(Model.Content)
 ```
 
+## Optional Parameters
+
 There are optional parameters for you to edit the text, colour, font size, position, z-index and even the umbraco edit link if you need to.
 
 ```javascript
