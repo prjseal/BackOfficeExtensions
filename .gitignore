@@ -5,3 +5,4 @@ BackOfficeExtensions/bin/Debug/$RANDOM_SEED$
 /.vs
 /BackOfficeExtensions/obj
 /BackOfficeExtensions/bin/Debug
+/BackOfficeExtensions/*.user
