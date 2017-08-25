@@ -7,7 +7,7 @@ It will show an edit link which takes you to the umbraco backoffice edit screen 
 
 Install via NuGet:
 ```javascript
-Install-Package BackOfficeExtensions -Version 1.0.2 
+Install-Package BackOfficeExtensions -Version 1.0.2
 ```
 
 [![Nuget Downloads](https://img.shields.io/nuget/dt/BackOfficeExtensions.svg)](https://www.nuget.org/packages/BackOfficeExtensions)
