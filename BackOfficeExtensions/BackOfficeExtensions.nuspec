@@ -5,13 +5,14 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>Paul Seal</authors>
-    <owners>MEDIAmaker, Paul Seal</owners>
+    <owners>Paul Seal, MEDIAmaker</owners>
+    <projectUrl>https://github.com/prjseal/BackOfficeExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
       - added classes and ability to edit position of outer and link, for use in lists of content. Moved position enum out of HtmlHelpers class
     </releaseNotes>
     <copyright>$copyright$</copyright>
-    <tags>BackOfficeExtensions</tags>
+    <tags>BackOfficeExtensions,Umbraco,Edit,Link</tags>
   </metadata>
 </package>
