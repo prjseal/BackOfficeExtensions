@@ -6,19 +6,21 @@ using Umbraco.Core.Security;
 
 namespace BackOfficeExtensions
 {
+    public enum EditLinkPosition
+    {
+        TopLeft = 0,
+        TopRight = 1,
+        BottomRight = 2,
+        BottomLeft = 3
+    }
+
     public static class HtmlHelpers
     {
-        public enum EditLinkPosition
-        {
-            TopLeft = 0,
-            TopRight = 1,
-            BottomRight = 2,
-            BottomLeft = 3
-        }
-
         public static IHtmlString UmbracoEditLink(this HtmlHelper helper, IPublishedContent thisPage,
             EditLinkPosition position = EditLinkPosition.TopLeft, string linkColour = "#00aea2", string editMessage = "Edit",
-            int margin = 10, int zindex = 999, string umbracoEditContentUrl = "/umbraco#/content/content/edit/")
+            int margin = 10, int zindex = 999, string umbracoEditContentUrl = "/umbraco#/content/content/edit/", 
+            int fontSize = 16, string outerPosition = "fixed", string linkPosition = "absolute",
+            string outerClassName = "edit-link-outer", string linkClassName = "edit-link-inner")
         {
             StringBuilder editLinkCode = new StringBuilder();
             var userTicket = new HttpContextWrapper(HttpContext.Current).GetUmbracoAuthTicket();
@@ -26,31 +28,34 @@ namespace BackOfficeExtensions
             if (userTicket != null)
             {
                 string outerStyles = "display:block;";
-
-                switch (position)
+                if (outerPosition == "fixed")
                 {
-                    case EditLinkPosition.TopLeft:
-                        outerStyles += $"top:{margin}px;";
-                        outerStyles += $"left:{margin}px;";
-                        break;
-                    case EditLinkPosition.TopRight:
-                        outerStyles += $"top:{margin}px;";
-                        outerStyles += $"right:{margin}px;";
-                        break;
-                    case EditLinkPosition.BottomRight:
-                        outerStyles += $"bottom:{margin}px;";
-                        outerStyles += $"right:{margin}px;";
-                        break;
-                    case EditLinkPosition.BottomLeft:
-                        outerStyles += $"bottom:{margin}px;";
-                        outerStyles += $"left:{margin}px;";
-                        break;
+                    switch (position)
+                    {
+                        case EditLinkPosition.TopLeft:
+                            outerStyles += $"top:{margin}px;";
+                            outerStyles += $"left:{margin}px;";
+                            break;
+                        case EditLinkPosition.TopRight:
+                            outerStyles += $"top:{margin}px;";
+                            outerStyles += $"right:{margin}px;";
+                            break;
+                        case EditLinkPosition.BottomRight:
+                            outerStyles += $"bottom:{margin}px;";
+                            outerStyles += $"right:{margin}px;";
+                            break;
+                        case EditLinkPosition.BottomLeft:
+                            outerStyles += $"bottom:{margin}px;";
+                            outerStyles += $"left:{margin}px;";
+                            break;
+                    }
                 }
 
                 outerStyles += $"z-index:{zindex};";
-                outerStyles += "position:fixed;";
+                outerStyles += $"position:{outerPosition};";
 
                 editLinkCode.Append($"<div");
+                editLinkCode.Append($" class=\"{outerClassName}\"");
                 if (!string.IsNullOrEmpty(outerStyles))
                 {
                     editLinkCode.Append($" style=\"{outerStyles}\"");
@@ -58,14 +63,15 @@ namespace BackOfficeExtensions
                 editLinkCode.Append($">");
 
                 string linkStyles = $"color:{linkColour};";
+                linkStyles += $"font-size:{fontSize}px;";
 
                 editLinkCode.Append($"<a ");
+                editLinkCode.Append($" class=\"{linkClassName}\"");
                 if (!string.IsNullOrEmpty(linkStyles))
                 {
                     editLinkCode.Append($"style={linkStyles}");
                 }
 
-                editLinkCode.Append($"<a ");
                 editLinkCode.Append($" target=\"_blank\"");
                 editLinkCode.Append($" href =\"{umbracoEditContentUrl}{thisPage.Id}\"");
                 editLinkCode.Append($">{editMessage}</a>");
